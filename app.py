@@ -29,3 +29,9 @@ class Task(db.Model):
     description = db.Column(db.String(100))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
+    def __repr__(self):
+    if self.user:
+        return f"{self.user.name}'s task: {self.name}"
+    else:
+        return f"Task with no associated user: {self.name}"
+

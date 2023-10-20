@@ -17,3 +17,11 @@ db.session.add(sarah)
 db.session.commit()
 
 
+
+
+#adding related table data
+>>> jay = User(name = 'jay', email = 'jay@gmail.com')
+>>> db.session.add(jay)
+>>> db.session.commit()
+>>> User.query.filter(User.name == 'jay').first() 
+>>> Task(name = 'laundry', user = jay)     #user is backref name!
