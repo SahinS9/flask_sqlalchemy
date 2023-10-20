@@ -1,0 +1,19 @@
+>>> User.query.filter(User.name == 'sarah')
+<flask_sqlalchemy.query.Query object at 0x0000015360CAC4C8>
+>>> User.query.filter(User.name == 'sarah').all()
+[sarah with sarah@gmail.com at 2023-10-20 as 5]
+>>> User.query.filter(User.date_joined > date(2022,10,20))
+<flask_sqlalchemy.query.Query object at 0x0000015360CAC4C8>
+>>> User.query.filter(User.date_joined > date(2022,10,20)).all()
+[Anthony with anthony_1@gmail.com at 2023-10-20 as 2, Anthony with anthony_2@gmail.com at 2023-10-20 as 3, anthony with anth@gmail.com at 2023-10-20 as 4, sarah with sarah@gmail.com at 2023-10-20 as 5]
+>>> User.query.filter(User.date_joined > date(2022,10,20)).order_by(User.date_joined.desc()).all()
+[Anthony with anthony_1@gmail.com at 2023-10-20 as 2, Anthony with anthony_2@gmail.com at 2023-10-20 as 3, anthony with anth@gmail.com at 2023-10-20 as 4, sarah with sarah@gmail.com at 2023-10-20 as 5]
+>>>
+
+sarah = User(name = 'sarah', email = 'sarah@gmail.com')
+
+db.session.add(sarah)
+
+db.session.commit()
+
+
