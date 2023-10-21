@@ -27,3 +27,9 @@ class Task(db.Model):
             return f"{self.user.name}'s task: {self.name}"
         else:
             return f"Task with no associated user: {self.name}"
+
+
+class Tag(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    name = db.Column(db.String(50))
+    task_id = db.Column(db.Integer, db.ForeignKey('task.id'))
